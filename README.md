@@ -9,7 +9,7 @@ npm install -g chromecast-cli
 ## Usage
 Type the following to get a list of all commands and options:
 ```
-chromecast
+chromecast-cli
 ```
 Please note that this tool does not discover Chromecast devices on your network for performance reasons. You have to specify an IP address via the `--host` option. Consider configuring your DHCP server to assign a fixed IP address to your Chromecast devices.
 
