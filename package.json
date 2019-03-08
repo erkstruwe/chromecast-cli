@@ -1,6 +1,6 @@
 {
   "name": "chromecast-cli",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "description": "Command line interface for Google Chromecast",
   "author": "Erk Struwe <estruwe@estruwe.de>",
   "license": "GPL-3.0",
@@ -25,7 +25,7 @@
     "test": "jshint chromecast-cli.js",
     "start": "node chromecast-cli.js",
     "preversion": "npm test",
-    "postversion": "git push master --follow-tags && npm publish"
+    "postversion": "git push origin master --follow-tags && npm publish"
   },
   "dependencies": {
     "async": "~2.6.2",
