@@ -1,6 +1,6 @@
 {
   "name": "chromecast-cli",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "description": "Command line interface for Google Chromecast",
   "author": "Erk Struwe <estruwe@estruwe.de>",
   "license": "GPL-3.0",
