@@ -28,12 +28,12 @@
     "postversion": "git push origin master --follow-tags && npm publish"
   },
   "dependencies": {
-    "async": "~2.6.2",
+    "async": "~3.2.0",
     "castv2-client": "~1.2.0",
     "commander": "~2.19.0",
-    "lodash": "~4.17.11"
+    "lodash": "~4.17.20"
   },
   "devDependencies": {
-    "jshint": "~2.10.3"
+    "jshint": "~2.12.0"
   }
 }
