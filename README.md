@@ -37,7 +37,7 @@ chromecast --host 192.168.1.100 play http://192.168.1.1/media/song.mp3
 Play a Youtube video (courtesy of [youtube-dl](https://www.npmjs.com/package/youtube-dl) package)
 
 ```
-chromecast --host 192.168.1.100 play $(youtube-dl -f bestaudio --get-url "https://youtu.be/dQw4w9WgXcQ")
+chromecast --host 192.168.1.100 play $(youtube-dl --format bestaudio --get-url "https://youtu.be/dQw4w9WgXcQ")
 ```
 
 ## Features
