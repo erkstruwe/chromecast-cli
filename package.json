@@ -1,13 +1,13 @@
 {
   "name": "chromecast-cli",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Command line interface for Google Chromecast",
   "author": "Erk Struwe <estruwe@estruwe.de>",
   "license": "GPL-3.0",
   "main": "chromecast-cli.js",
   "engines": {
-    "node": ">=5.12.0",
-    "npm": ">=3.8.6"
+    "node": ">=8.17.0",
+    "npm": ">=6.13.4"
   },
   "preferGlobal": true,
   "bin": {
@@ -22,18 +22,15 @@
     "url": "https://github.com/erkstruwe/chromecast-cli/issues"
   },
   "scripts": {
-    "test": "jshint chromecast-cli.js",
+    "test": "echo 'No tests. Skipping.'",
     "start": "node chromecast-cli.js",
     "preversion": "npm test",
     "postversion": "git push origin master --follow-tags && npm publish"
   },
   "dependencies": {
-    "async": "~3.2.0",
-    "castv2-client": "~1.2.0",
-    "commander": "~2.19.0",
-    "lodash": "~4.17.20"
-  },
-  "devDependencies": {
-    "jshint": "~2.12.0"
+    "async": "^3.2.0",
+    "castv2-client": "^1.2.0",
+    "commander": "^2.20.3",
+    "lodash": "^4.17.20"
   }
 }
