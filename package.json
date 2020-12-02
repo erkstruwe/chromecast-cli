@@ -13,6 +13,7 @@
   "bin": {
     "chromecast": "./chromecast-cli.js"
   },
+  "keywords": ["chromecast", "cli", "cast", "stream", "google"],
   "homepage": "https://github.com/erkstruwe/chromecast-cli#readme",
   "repository": {
     "type": "git",
