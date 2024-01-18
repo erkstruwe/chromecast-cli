@@ -3,11 +3,10 @@
   "version": "2.0.1",
   "description": "Command line interface for Google Chromecast",
   "author": "Erk Struwe <estruwe@estruwe.de>",
-  "license": "GPL-3.0",
   "main": "chromecast-cli.js",
   "engines": {
-    "node": ">=8.17.0",
-    "npm": ">=6.13.4"
+    "node": ">=18",
+    "npm": ">=10"
   },
   "preferGlobal": true,
   "bin": {

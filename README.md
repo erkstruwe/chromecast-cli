@@ -65,4 +65,4 @@ chromecast --host 192.168.1.100 play $(youtube-dl --format bestaudio --get-url "
 
 ## Changelog
 
-- Version 1 required a Node.js version of at least 5. Version 2 requires a Node.js version of at least 8.
+- Version 1 required a Node.js version of at least 5. Version 2 requires a Node.js version of at least 8. Version 3 requires a Node.js version of at least 18.
