@@ -6,7 +6,7 @@
   "main": "chromecast-cli.js",
   "engines": {
     "node": ">=18",
-    "npm": ">=10"
+    "npm": ">=9"
   },
   "preferGlobal": true,
   "bin": {
