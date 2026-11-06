@@ -34,9 +34,12 @@
     "postversion": "git push origin master --follow-tags && npm publish"
   },
   "dependencies": {
-    "async": "^3.2.0",
+    "async": "^3.2.6",
     "castv2-client": "^1.2.0",
-    "commander": "^2.20.3",
-    "lodash": "^4.17.20"
+    "commander": "^13.1.0",
+    "lodash": "^4.18.1"
+  },
+  "overrides": {
+    "protobufjs": "^7.6.6"
   }
 }

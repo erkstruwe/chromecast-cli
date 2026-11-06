@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const { promisify } = require("util");
 
-var commander = require("commander");
+var commander = require("commander").program;
 var async = require("async");
 var lodash = require("lodash");
 var Client = require("castv2-client").Client;
@@ -94,12 +94,11 @@ class ClientService {
     }
 }
 
-commander
-    .version(process.env.npm_package_version)
-    .option(
-        "-H, --host <host>",
-        "IP address or hostname of Chromecast (required)"
-    );
+commander.version(require("./package.json").version);
+commander.option(
+    "-H, --host <host>",
+    "IP address or hostname of Chromecast (required)"
+);
 
 commander
     .command("play <src...>")
@@ -107,12 +106,12 @@ commander
     // TODO .option('-r, --repeat-mode <repeat-mode>', 'Set repeat mode (REPEAT_OFF, REPEAT_ONE or REPEAT_ALL)', /^(REPEAT_OFF|REPEAT_ONE|REPEAT_ALL)$/i, 'REPEAT_OFF')
     .option("-i, --no-interrupt", "Do not interrupt if already casting")
     .action(function (src, options) {
-        if (!commander.host) throw new Error("--host option is required");
+        if (!commander.opts().host) throw new Error("--host option is required");
 
         return async.auto(
             {
                 client: function (cb) {
-                    return connect(commander.host, cb);
+                    return connect(commander.opts().host, cb);
                 },
                 status: [
                     "client",
@@ -195,7 +194,7 @@ commander
     .command("volume <volume>")
     .description("Set the volume to <volume>")
     .action(function (volume) {
-        if (!commander.host) throw new Error("--host option is required");
+        if (!commander.opts().host) throw new Error("--host option is required");
 
         volume = parseFloat(volume);
         if (!volume)
@@ -206,7 +205,7 @@ commander
         return async.auto(
             {
                 client: function (cb) {
-                    return connect(commander.host, cb);
+                    return connect(commander.opts().host, cb);
                 },
                 volume: [
                     "client",
@@ -233,7 +232,7 @@ commander
     .command("volumeStepUp <volumeStep>")
     .description("Set the volume <volumeStep> higher")
     .action(function (volumeStep) {
-        if (!commander.host) throw new Error("--host option is required");
+        if (!commander.opts().host) throw new Error("--host option is required");
 
         volumeStep = parseFloat(volumeStep);
         if (!volumeStep)
@@ -244,7 +243,7 @@ commander
         return async.auto(
             {
                 client: function (cb) {
-                    return connect(commander.host, cb);
+                    return connect(commander.opts().host, cb);
                 },
                 oldVolume: [
                     "client",
@@ -281,7 +280,7 @@ commander
     .command("volumeStepDown <volumeStep>")
     .description("Set the volume <volumeStep> lower")
     .action(function (volumeStep) {
-        if (!commander.host) throw new Error("--host option is required");
+        if (!commander.opts().host) throw new Error("--host option is required");
 
         volumeStep = parseFloat(volumeStep);
         if (!volumeStep)
@@ -292,7 +291,7 @@ commander
         return async.auto(
             {
                 client: function (cb) {
-                    return connect(commander.host, cb);
+                    return connect(commander.opts().host, cb);
                 },
                 oldVolume: [
                     "client",
@@ -329,12 +328,12 @@ commander
     .command("mute")
     .description("Mute")
     .action(function () {
-        if (!commander.host) throw new Error("--host option is required");
+        if (!commander.opts().host) throw new Error("--host option is required");
 
         return async.auto(
             {
                 client: function (cb) {
-                    return connect(commander.host, cb);
+                    return connect(commander.opts().host, cb);
                 },
                 volume: [
                     "client",
@@ -358,12 +357,12 @@ commander
     .command("unmute")
     .description("Unmute")
     .action(function () {
-        if (!commander.host) throw new Error("--host option is required");
+        if (!commander.opts().host) throw new Error("--host option is required");
 
         return async.auto(
             {
                 client: function (cb) {
-                    return connect(commander.host, cb);
+                    return connect(commander.opts().host, cb);
                 },
                 volume: [
                     "client",
@@ -387,12 +386,12 @@ commander
     .command("stop")
     .description("Stop playback")
     .action(function () {
-        if (!commander.host) throw new Error("--host option is required");
+        if (!commander.opts().host) throw new Error("--host option is required");
 
         return async.auto(
             {
                 client: function (cb) {
-                    return connect(commander.host, cb);
+                    return connect(commander.opts().host, cb);
                 },
                 stop: [
                     "client",
@@ -416,7 +415,7 @@ commander
     .description("Pause playback")
     .action(async () => {
         try {
-            const client = await ClientService.create(commander.host);
+            const client = await ClientService.create(commander.opts().host);
             const app = await client.getApp();
             if (!app) {
                 console.warn("Nothing playing");
@@ -435,7 +434,7 @@ commander
     .description("Unpause playback")
     .action(async () => {
         try {
-            const client = await ClientService.create(commander.host);
+            const client = await ClientService.create(commander.opts().host);
             const app = await client.getApp();
             if (!app) {
                 console.warn("Nothing playing");
@@ -454,7 +453,7 @@ commander
     .description("Get Chromecast status")
     .action(async () => {
         try {
-            const client = await ClientService.create(commander.host);
+            const client = await ClientService.create(commander.opts().host);
             const status = await client.getStatus();
             log(status);
         } catch (error) {
@@ -469,7 +468,7 @@ commander
     .description("Get current playback sessions")
     .action(async () => {
         try {
-            const client = await ClientService.create(commander.host);
+            const client = await ClientService.create(commander.opts().host);
             const sessions = await client.getSessions();
             log(sessions);
         } catch (error) {
@@ -484,7 +483,7 @@ commander
     .description("Get current playback session details (e. g. title, application, image URLs, etc.) of first session")
     .action(async () => {
         try {
-            const client = await ClientService.create(commander.host);
+            const client = await ClientService.create(commander.opts().host);
             const app = await client.getApp();
             if (!app) {
                 console.warn("No session");
