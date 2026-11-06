@@ -63,6 +63,12 @@ Play a Youtube video (courtesy of [youtube-dl](https://www.npmjs.com/package/you
 chromecast --host 192.168.1.100 play $(youtube-dl --format bestaudio --get-url "https://youtu.be/dQw4w9WgXcQ")
 ```
 
+## Publishing
+
+Configure `chromecast-cli` on npm to trust GitHub Actions for the `erkstruwe/chromecast-cli` repository and the `publish.yml` workflow, allowing staged publishing (`npm trust github chromecast-cli --repository erkstruwe/chromecast-cli --file publish.yml --allow-stage-publish`). No npm access token is needed.
+
+Running `npm version patch` (or `minor`/`major`) pushes the version tag. The workflow tests and stages the package with `npm stage publish` using OIDC; it does not publish the package publicly. Review and approve it manually with `npm stage list`, then `npm stage approve <stage-id>` (npm requires 2FA for approval).
+
 ## Changelog
 
 - Version 1 required a Node.js version of at least 5. Version 2 requires a Node.js version of at least 8. Version 3 requires a Node.js version of at least 18.

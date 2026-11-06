@@ -31,7 +31,7 @@
     "test": "echo 'No tests. Skipping.'",
     "start": "node chromecast-cli.js",
     "preversion": "npm test",
-    "postversion": "git push origin master --follow-tags && npm publish"
+    "postversion": "git push origin master --follow-tags"
   },
   "dependencies": {
     "async": "^3.2.6",
